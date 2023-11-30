@@ -5,7 +5,7 @@
   "packageManager": "yarn@1.22.19",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "cross-env NODE_CONFIG_ENV=local node --loader ts-node/esm ./src/index.ts"
   },
   "dependencies": {
     "@incanta/config": "^0.1.18",
@@ -16,6 +16,7 @@
     "@types/node": "^20.10.1",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",

@@ -25,17 +25,23 @@ const mqttClient = mqtt.connect({
   password: config.get<string>("mqtt.password"),
 });
 
+console.log("Connecting to MQTT...");
+
 await new Promise<void>((resolve) => {
   mqttClient.on("connect", () => {
     resolve();
   });
 });
 
+console.log("Connected to MQTT");
+
 const id = "fireplace";
 const stateTopic = id;
 const commandTopic = `${stateTopic}/set`;
 
 async function update() {
+  console.log(`Fireplace is ${fireplaceOn ? "ON" : "OFF"}`);
+
   if (fireplaceOn) {
     fireplaceSwitch.writeSync(1);
   } else {
